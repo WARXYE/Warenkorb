@@ -10,11 +10,9 @@
 
     <h1 class="mt-5">Welcome to the Online Store</h1>
 
-    <!-- Product Listing -->
     <ul class="list-group mt-3">
         <li class="list-group-item">Product 1 - $20 <a href="cart.php?action=add&id=1" class="btn btn-primary btn-sm float-right">Add to Cart</a></li>
         <li class="list-group-item">Product 2 - $30 <a href="cart.php?action=add&id=2" class="btn btn-primary btn-sm float-right">Add to Cart</a></li>
-        <!-- Add more products as needed -->
     </ul>
 
 </body>
