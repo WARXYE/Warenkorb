@@ -8,12 +8,28 @@
 </head>
 <body class="container">
 
-    <h1 class="mt-5">Welcome to the Online Store</h1>
+<h1 class="mt-5">Welcome to the Online Store</h1>
 
-    <ul class="list-group mt-3">
-        <li class="list-group-item">Product 1 - $20 <a href="cart.php?action=add&id=1" class="btn btn-primary btn-sm float-right">Add to Cart</a></li>
-        <li class="list-group-item">Product 2 - $30 <a href="cart.php?action=add&id=2" class="btn btn-primary btn-sm float-right">Add to Cart</a></li>
-    </ul>
+<ul class="list-group mt-3">
+    <?php
+    // Annahme: Die JSON-Datei befindet sich im gleichen Verzeichnis wie die PHP-Dateien
+    $jsonFile = 'bookdata.php';
+
+    if (file_exists($jsonFile)) {
+        $jsonData = file_get_contents($jsonFile);
+        $books = json_decode($jsonData, true);
+
+        foreach ($books as $book) {
+            // Überprüfe, ob der Schlüssel "name" vorhanden ist
+            $productName = isset($book['name']) ? $book['name'] : 'N/A';
+
+            echo '<li class="list-group-item">' . $productName . ' - $' . $book['price'] . ' <a href="cart.php?action=add&id=' . $book['id'] . '" class="btn btn-primary btn-sm float-right">Add to Cart</a></li>';
+        }
+    } else {
+        echo '<li class="list-group-item">Error loading data</li>';
+    }
+    ?>
+</ul>
 
 </body>
 </html>
